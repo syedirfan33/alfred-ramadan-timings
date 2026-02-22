@@ -17,15 +17,15 @@
       INPUT_COUNTRY="${TOKENS[1]:-}"
   fi
 
-  # --- Defaults ---
-  CITY="${INPUT_CITY:-Amsterdam}"
-  COUNTRY="${INPUT_COUNTRY:-Netherlands}"
+  # --- Defaults (workflow variables > hardcoded fallback) ---
+  CITY="${INPUT_CITY:-${wf_default_city:-Amsterdam}}"
+  COUNTRY="${INPUT_COUNTRY:-${wf_default_country:-Netherlands}}"
   METHOD="${wf_method:-3}"
   DAY="${DAY:-$(date +%d)}"
   DATE="${DAY}-$(date +%m)-$(date +%Y)"
 
   # --- Cache ---
-  CACHE_DIR="${alfred_workflow_cache:-${TMPDIR}ramadan_cache}"
+  CACHE_DIR="${alfred_workflow_cache:-${TMPDIR}prayer_cache}"
   mkdir -p "$CACHE_DIR"
   CACHE_FILE="${CACHE_DIR}/timings_${DATE}_${CITY}_${COUNTRY}.json"
 
